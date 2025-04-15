@@ -1,0 +1,65 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: check login with invalid crendentials
+- Location: C:\Users\HP\Desktop\APPLAYWRIGHT\tests\LoginPageTest.spec.js:28:1
+
+# Error details
+
+```
+Error: locator.fill: Target page, context or browser has been closed
+Call log:
+  - waiting for getByPlaceholder('email@example.com')
+
+    at LoginPage.invalidlogin (C:\Users\HP\Desktop\APPLAYWRIGHT\pageObjects\LoginPage.js:29:30)
+    at C:\Users\HP\Desktop\APPLAYWRIGHT\tests\LoginPageTest.spec.js:30:21
+```
+
+# Test source
+
+```ts
+   1 | class LoginPage
+   2 | {
+   3 |
+   4 |     constructor(page)
+   5 |     {
+   6 |
+   7 |         this.page=page
+   8 |         this.username = page.getByPlaceholder('email@example.com')
+   9 |         this.password = page.locator('#userPassword')
+  10 |         this.loginbtn = page.getByRole('button',{name:'Login'})
+  11 |         this.homepageidentifier = page.getByRole('button',{name:'Home'})
+  12 |         this.errormessage = page.locator('#toast-container')
+  13 |
+  14 |     }
+  15 |
+  16 |     async launchurl(){
+  17 |        await  this.page.goto('https://rahulshettyacademy.com/client')
+  18 |     }
+  19 |
+  20 |     async validlogin(username,password){
+  21 |        await  this.username.fill(username)
+  22 |        await  this.password.fill(password)
+  23 |        await this.loginbtn.click()
+  24 |        await this.homepageidentifier.waitFor()
+  25 |
+  26 |     }
+  27 |
+  28 |     async invalidlogin(username,password){
+> 29 |         await  this.username.fill(username)
+     |                              ^ Error: locator.fill: Target page, context or browser has been closed
+  30 |         await  this.password.fill(password)
+  31 |         await this.loginbtn.click()
+  32 |         await this.errormessage.waitFor()
+  33 |  
+  34 |      }
+  35 | }
+  36 |
+  37 |
+  38 | module.exports = {LoginPage}
+```

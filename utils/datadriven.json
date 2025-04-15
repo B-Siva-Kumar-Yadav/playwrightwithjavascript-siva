@@ -1,0 +1,31 @@
+[
+    {
+        "name" : "siva",
+        "username": "kumarsivab22@gmail.com",
+      "userpassword": "Siva12345",
+      "invaliduserpassword": "kumar123",
+     "url" : "https://rahulshettyacademy.com/client",
+    " productname" :"IPHONE 13 PRO"
+    
+    },
+
+    {
+        "name" : "kumar",
+        "username": "kumarsivab22@gmail.com",
+      "userpassword": "Siva12345",
+      "invaliduserpassword": "kumar1234",
+     "url" : "https://rahulshettyacademy.com/client",
+    " productname" :"ZARA COAT 3"
+    
+    },
+
+    {
+        "name" : "yadav",
+        "username": "kumarsivab22@gmail.com",
+      "userpassword": "Siva12345",
+      "invaliduserpassword": "kumar1235",
+     "url" : "https://rahulshettyacademy.com/client",
+    " productname" :"ADIDAS ORIGINAL"
+    
+    }
+]

@@ -1,0 +1,96 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: visual testing
+- Location: C:\Users\HP\Desktop\APPLAYWRIGHT\tests\visualtesting.spec.js:20:6
+
+# Error details
+
+```
+Error: expect(Buffer).toMatchSnapshot(expected)
+
+  709 pixels (ratio 0.01 of all image pixels) are different.
+
+Expected: C:\Users\HP\Desktop\APPLAYWRIGHT\tests\visualtesting.spec.js-snapshots\vishal-chromium-win32.png
+Received: C:\Users\HP\Desktop\APPLAYWRIGHT\test-results\visualtesting-visual-testing-chromium\vishal-actual.png
+    Diff: C:\Users\HP\Desktop\APPLAYWRIGHT\test-results\visualtesting-visual-testing-chromium\vishal-diff.png
+
+    at C:\Users\HP\Desktop\APPLAYWRIGHT\tests\visualtesting.spec.js:22:44
+```
+
+# Page snapshot
+
+```yaml
+- banner:
+  - text: Ecom
+  - link " dummywebsite@rahulshettyacademy.com"
+  - link ""
+  - link ""
+  - link ""
+  - link ""
+- heading "We Make Your Shopping Simple" [level=3]
+- heading "Practice Website for Rahul Shetty Academy Students" [level=1]:
+  - text: Practice Website for
+  - emphasis: Rahul Shetty Academy
+  - text: Students
+- link "Register"
+- paragraph: Register to sign in with your personal account
+- heading "Log in" [level=1]
+- text: Email
+- textbox "email@example.com"
+- text: Password
+- textbox "enter your passsword"
+- button "Login"
+- link "Forgot password?"
+- paragraph: Don't have an account? Register here
+- heading "Why People Choose Us?" [level=1]
+- text: 
+- heading "3546540" [level=1]
+- paragraph: Successfull Orders
+- text: 
+- heading "37653" [level=1]
+- paragraph: Customers
+- text: 
+- heading "3243" [level=1]
+- paragraph: Sellers
+- text: 
+- heading "4500+" [level=1]
+- paragraph: Daily Orders
+- text: 
+- heading "500+" [level=1]
+- paragraph: Daily New Customer Joining
+```
+
+# Test source
+
+```ts
+   1 | const {test,expect} =require('@playwright/test')
+   2 | // screenshot 
+   3 |
+   4 |
+   5 | // full page screen shot 
+   6 | test('full page screen shot ' , async({page})=>{
+   7 |     await page.goto('https://rahulshettyacademy.com/client')
+   8 |     await page.screenshot({path : "Fullpagescreenshot.png"})
+   9 | })
+  10 |
+  11 | // element specific screenshot 
+  12 |
+  13 | test(' element specific screenshot ', async({page})=>{
+  14 |     await page.goto('https://rahulshettyacademy.com/client')
+  15 |     await page.locator('#login').screenshot({path : "logincreenshot1.png"})
+  16 | })
+  17 |
+  18 | // visual testing  
+  19 |
+  20 | test.only('visual testing', async({page})=>{
+  21 |     await page.goto('https://rahulshettyacademy.com/client') 
+> 22 |     await expect(await page .screenshot()).toMatchSnapshot('vishal.png')
+     |                                            ^ Error: expect(Buffer).toMatchSnapshot(expected)
+  23 | })
+```
