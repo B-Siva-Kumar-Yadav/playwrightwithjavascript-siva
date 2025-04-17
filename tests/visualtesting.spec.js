@@ -17,7 +17,7 @@ test(' element specific screenshot ', async({page})=>{
 
 // visual testing  
 
-test.only('visual testing', async({page})=>{
+test('visual testing', async({page})=>{
     await page.goto('https://rahulshettyacademy.com/client') 
     await expect(await page .screenshot()).toMatchSnapshot('vishal.png')
 })
